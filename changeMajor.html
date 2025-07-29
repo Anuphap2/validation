@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>คำร้องขอโอนย้ายสาขาวิชา/คณะ</title>
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
+    <div class="container max-w-4xl bg-white rounded-xl shadow-lg p-10 space-y-10">
+
+        <h1 class="text-3xl font-extrabold text-center text-blue-700">คำร้องขอโอนย้ายสาขาวิชา/คณะ</h1>
+
+        <form id="transferForm" action="" class="space-y-10">
+
+            <!-- ข้อมูลส่วนตัว -->
+            <section class="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                <h2 class="text-xl font-semibold mb-6 text-blue-600 border-b border-blue-300 pb-2">ข้อมูลส่วนตัว</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div>
+                        <label for="date" class="block mb-2 font-semibold text-gray-700">วันที่</label>
+                        <input type="date" id="date" name="date"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <span class="text-red-600 text-sm mt-1 block" id="dateError"></span>
+                    </div>
+
+                    <div>
+                        <label for="title" class="block mb-2 font-semibold text-gray-700">คำนำหน้า</label>
+                        <select id="title" name="title"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="" disabled selected>เลือกคำนำหน้า</option>
+                            <option value="นาย">นาย</option>
+                            <option value="นางสาว">นางสาว</option>
+                            <option value="นาง">นาง</option>
+                        </select>
+                        <span class="text-red-600 text-sm mt-1 block" id="titleError"></span>
+                    </div>
+
+                    <div>
+                        <label for="fullname" class="block mb-2 font-semibold text-gray-700">ชื่อ-นามสกุล</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="กรอกชื่อ-นามสกุล"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <span class="text-red-600 text-sm mt-1 block" id="fullnameError"></span>
+                    </div>
+
+                    <div>
+                        <label for="studentId" class="block mb-2 font-semibold text-gray-700">รหัสนักศึกษา</label>
+                        <input type="text" id="studentId" name="studentId" placeholder="กรอกรหัสนักศึกษา"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <span class="text-red-600 text-sm mt-1 block" id="studentIdError"></span>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block mb-2 font-semibold text-gray-700">เบอร์โทรศัพท์</label>
+                        <input type="tel" id="phone" name="phone" placeholder="กรอกเบอร์โทรศัพท์" maxlength="10"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <p class="text-gray-500 text-sm mt-1">กรอกตัวเลข 9-10 หลัก</p>
+                        <span class="text-red-600 text-sm mt-1 block" id="phoneError"></span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ข้อมูลหลักสูตรและภาคเรียน -->
+            <section class="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                <h2 class="text-xl font-semibold mb-6 text-blue-600 border-b border-blue-300 pb-2">
+                    ข้อมูลหลักสูตรและภาคเรียน</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div>
+                        <label for="program" class="block mb-2 font-semibold text-gray-700">หลักสูตร</label>
+                        <select id="program" name="program"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="" disabled selected>เลือกหลักสูตร</option>
+                            <option value="1">4-5 ปี</option>
+                            <option value="2">4 ปีเทียบเข้าเรียน (2 ปี)</option>
+                        </select>
+                        <span class="text-red-600 text-sm mt-1 block" id="programError"></span>
+                    </div>
+
+                    <div>
+                        <label for="section" class="block mb-2 font-semibold text-gray-700">ภาค</label>
+                        <select id="section" name="section"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="" disabled selected>เลือกภาค</option>
+                            <option value="1">ปกติ</option>
+                            <option value="2">ภาคพิเศษ</option>
+                        </select>
+                        <span class="text-red-600 text-sm mt-1 block" id="sectionError"></span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ข้อมูลการโอนย้าย -->
+            <section class="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                <h2 class="text-xl font-semibold mb-6 text-blue-600 border-b border-blue-300 pb-2">ข้อมูลการโอนย้าย</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div>
+                        <label for="oldFaculty" class="block mb-2 font-semibold text-gray-700">คณะ (เก่า)</label>
+                        <input type="text" id="oldFaculty" name="oldFaculty" placeholder="กรอกคณะเดิม"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <span class="text-red-600 text-sm mt-1 block" id="oldFacultyError"></span>
+                    </div>
+
+                    <div>
+                        <label for="oldMajor" class="block mb-2 font-semibold text-gray-700">สาขาวิชา (เก่า)</label>
+                        <input type="text" id="oldMajor" name="oldMajor" placeholder="กรอกสาขาวิชาเดิม"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <span class="text-red-600 text-sm mt-1 block" id="oldMajorError"></span>
+                    </div>
+
+                    <div>
+                        <label for="newFaculty" class="block mb-2 font-semibold text-gray-700">คณะ (ใหม่)</label>
+                        <input type="text" id="newFaculty" name="newFaculty" placeholder="กรอกคณะใหม่"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <span class="text-red-600 text-sm mt-1 block" id="newFacultyError"></span>
+                    </div>
+
+                    <div>
+                        <label for="newMajor" class="block mb-2 font-semibold text-gray-700">สาขาวิชา (ใหม่)</label>
+                        <input type="text" id="newMajor" name="newMajor" placeholder="กรอกสาขาวิชาใหม่"
+                            class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <span class="text-red-600 text-sm mt-1 block" id="newMajorError"></span>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- เหตุผลการโอนย้าย -->
+            <section class="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                <h2 class="text-xl font-semibold mb-6 text-blue-600 border-b border-blue-300 pb-2">เหตุผลการโอนย้าย</h2>
+                <div>
+                    <label for="reason" class="block mb-2 font-semibold text-gray-700">เนื่องจาก</label>
+                    <textarea id="reason" name="reason" rows="5" placeholder="กรุณากรอกเหตุผล"
+                        class="w-full border border-gray-300 rounded-md px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    <span class="text-red-600 text-sm mt-1 block" id="reasonError"></span>
+                </div>
+            </section>
+
+            <!-- ปุ่มส่ง -->
+            <div>
+                <button type="submit"
+                    class="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-md transition duration-300 shadow-md">
+                    ส่งคำร้อง
+                </button>
+            </div>
+
+        </form>
+    </div>
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+
+        <div class="relative bg-white rounded-xl p-8 max-w-sm w-full text-center shadow-2xl">
+            <h2 class="text-gray-900 text-3xl font-extrabold mb-6">ส่งคำร้องสําเร็จ !</h2>
+            <button id="closeModalBtn"
+                class="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-md transition duration-300 shadow-md">
+                ปิด
+            </button>
+        </div>
+    </div>
+    <script src="js/transferForm.js"></script>
+</body>
+
+</html>

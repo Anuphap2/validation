@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบสอบถามสุขภาพ (Health Survey)</title>
+
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-50 h-screen flex justify-center items-center">
+    <div class="container mx-auto max-w-4xl bg-white p-8 rounded-md shadow-md">
+        <h1 class="text-3xl font-extrabold mb-8 text-center text-gray-900">แบบสอบถามสุขภาพ (Health Survey)</h1>
+        <form id="healthForm" action="" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+                <!-- อายุ -->
+                <div>
+                    <label for="age" class="block mb-2 text-sm font-semibold text-gray-700">อายุ</label>
+                    <input type="number" id="age" name="age" placeholder="กรอกอายุ" class="input-border-blue" />
+                    <span class=" text-red-600 text-sm mt-1 block" id="ageError"></span>
+                </div>
+
+                <!-- น้ำหนัก -->
+                <div>
+                    <label for="weight" class="block mb-2 text-sm font-semibold text-gray-700">น้ำหนัก</label>
+                    <input type="number" id="weight" name="weight" placeholder="กรอกน้ำหนัก"
+                        class="input-border-blue " />
+                    <span class=" text-red-600 text-sm mt-1 block" id="weightError"></span>
+                </div>
+
+                <!-- ส่วนสูง -->
+                <div>
+                    <label for="height" class="block mb-2 text-sm font-semibold text-gray-700">ส่วนสูง (cm.)</label>
+                    <input type="number" id="height" name="height" placeholder="กรอกส่วนสูง (cm.)"
+                        class="input-border-blue " />
+                    <span class=" text-red-600 text-sm mt-1 block" id="heightError"></span>
+                </div>
+
+                <!-- เพศ -->
+                <div>
+                    <label class="block mb-2 text-sm font-semibold text-gray-700">เพศ</label>
+                    <div class="flex space-x-6">
+                        <label class="inline-flex items-center space-x-2 cursor-pointer text-gray-800">
+                            <input type="radio" name="gender" value="male" class="form-radio text-blue-500" />
+                            <span>ชาย</span>
+                        </label>
+                        <label class="inline-flex items-center space-x-2 cursor-pointer text-gray-800">
+                            <input type="radio" name="gender" value="female" class="form-radio text-blue-500" />
+                            <span>หญิง</span>
+                        </label>
+                    </div>
+                    <span class="text-red-600 text-sm mt-1 block" id="genderError"></span>
+                </div>
+
+                <!-- เช็คบ็อกซ์โรค -->
+                <div class="">
+                    <label for="disease" class="block mb-2 text-sm font-semibold text-gray-700">มีโรคประจำตัว</label>
+                    <label for="disease"
+                        class="flex items-center space-x-3 cursor-pointer text-gray-900 font-medium select-none">
+                        <input type="checkbox" id="disease" name="disease"
+                            class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-400" />
+                        <span>โปรดระบุหากมีโรคประจำตัว</span>
+                    </label>
+                </div>
+
+                <!-- รายละเอียดโรค -->
+                <div id="diseaseDetails" class="hidden md:col-span-3">
+                    <label for="diseaseText"
+                        class="block mb-2 text-sm font-semibold text-gray-700">รายละเอียดโรคประจำตัว</label>
+                    <textarea id="diseaseText" name="diseaseText" rows="4"
+                        placeholder="กรุณากรอกรายละเอียดโรคประจำตัว (ถ้ามี)"
+                        class="w-full border border-gray-300 rounded-sm px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none"></textarea>
+                    <span class="text-red-600 text-sm mt-1 block" id="diseaseError"></span>
+                </div>
+
+            </div>
+
+
+            <button type="submit" class="button-survey">
+                ยืนยัน
+            </button>
+        </form>
+    </div>
+
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+
+        <div class="relative bg-white rounded-md p-8 max-w-sm w-full text-center shadow-2xl">
+            <h2 class="text-gray-900 text-3xl font-extrabold mb-4">ผลการคำนวณ BMI</h2>
+
+            <p class="text-xl text-gray-800 mb-2">ค่าดัชนีมวลกายของคุณคือ</p>
+            <p id="bmiValue" class="text-4xl font-extrabold text-indigo-600 mb-4">--</p>
+
+            <p class="text-lg text-gray-800 font-semibold">หมวดหมู่สุขภาพ:</p>
+            <p id="bmiCategory" class="text-xl font-bold text-green-600 mb-6">--</p>
+
+            <button id="closeModalBtn" class="button-survey">
+                ปิด
+            </button>
+        </div>
+    </div>
+
+
+    <script src="js/healthSurvey.js"></script>
+
+
+
+
+</body>
+
+</html>

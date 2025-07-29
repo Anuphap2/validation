@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-50 h-screen flex justify-center items-center">
+    <div class="container mx-auto max-w-4xl bg-white p-8 rounded-md shadow-md">
+        <h1 class="text-3xl font-extrabold mb-8 text-center text-gray-900">จองตั๋วกิจกรรม (Event Booking)</h1>
+        <form id="eventForm" action="" class="space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="fname" class="block mb-2 text-sm font-semibold text-gray-700">ชื่อจริง</label>
+                    <input class="input-border" type="text" name="fname" id="fname" minlength="2"
+                        placeholder="กรอกชื่อจริง" />
+                    <span class="text-red-600 text-sm mt-1 block" id="fnameError"></span>
+                </div>
+
+                <div>
+                    <label for="lname" class="block mb-2 text-sm font-semibold text-gray-700">นามสกุล</label>
+                    <input class="input-border" type="text" name="lname" id="lname" minlength="2"
+                        placeholder="กรอกนามสกุล" />
+                    <span class="text-red-600 text-sm mt-1 block" id="lnameError"></span>
+                </div>
+
+                <div>
+                    <label for="tel" class="block mb-2 text-sm font-semibold text-gray-700">เบอร์โทร</label>
+                    <input class="input-border" type="tel" name="tel" id="tel" maxlength="10"
+                        placeholder="เช่น 0612345678" title="กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง เช่น 0612345678" />
+                    <span class="text-red-600 text-sm mt-1 block" id="telError"></span>
+                </div>
+
+                <div>
+                    <label for="type_ticket" class="block mb-2 text-sm font-semibold text-gray-700">ประเภทตั๋ว</label>
+                    <select
+                        class="w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 focus:border-black focus:ring-2 focus:ring-black focus:outline-none transition"
+                        name="type_ticket" id="type_ticket">
+                        <option selected disabled value="">--- เลือกประเภทตั๋ว ---</option>
+                        <option value="1">ปกติ</option>
+                        <option value="2">VIP</option>
+                        <option value="3">Premium</option>
+                    </select>
+                    <span class="text-red-600 text-sm mt-1 block" id="ticketError"></span>
+                </div>
+
+                <div>
+                    <label for="qty" class="block mb-2 text-sm font-semibold text-gray-700">จำนวน</label>
+                    <input class="input-border" value="1" min="1" max="5" type="number" name="qty" id="qty" />
+                    <span class="text-red-600 text-sm mt-1 block" id="qtyError"></span>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button
+                    class="bg-black cursor-pointer text-white px-6 py-3 rounded-sm font-semibold w-full hover:bg-gray-800 transition duration-300 ease-in-out"
+                    type="submit">
+                    ยืนยัน
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <!-- Overlay ที่เป็นพื้นหลังครึ้ม ๆ -->
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+
+        <!-- เนื้อหาของ modal -->
+        <div class="relative bg-white rounded-xl p-8 max-w-sm w-full text-center shadow-2xl">
+            <h2 class="text-gray-900 text-3xl font-extrabold mb-6">จองตั๋วสำเร็จ !</h2>
+            <p class="text-gray-700 mb-6" id="successMessage"></p>
+            <button id="closeModalBtn"
+                class="bg-black cursor-pointer text-white px-6 py-2 rounded-sm font-semibold hover:bg-gray-800 transition">
+                ปิด
+            </button>
+        </div>
+    </div>
+
+    <script src="js/eventForm.js"></script>
+
+
+</body>
+
+</html>
