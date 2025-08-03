@@ -125,7 +125,7 @@ eventForm.addEventListener('submit', function (e) {
         qtyError.textContent = "จำนวนต้องอยู่ระหว่าง 1 ถึง 5";
         return;
     }
-    if ((type_ticket == "2" || type_ticket == "3") && qtyNumber >= 2) {
+    if ((type_ticket == "2" || type_ticket == "3") && qtyNumber > 2) {
         qtyError.textContent = "จำนวนตั๋วประเภท VIP หรือ Premium ไม่เกิน 2 ใบ";
         return;
     }
