@@ -22,6 +22,13 @@ const successMessage = document.getElementById('successMessage');
 // ฟังก์ชันแสดง modal พร้อมส่งข้อความจำนวนและประเภท
 function showmodal(qty, type_ticket) {
     successModal.classList.remove('hidden');
+    if (type_ticket == "1") {
+        type_ticket = "ปกติ";
+    } else if (type_ticket == "2") {
+        type_ticket = "VIP";
+    } else if (type_ticket == "3") {
+        type_ticket = "Premium";
+    }
     successMessage.textContent = `จำนวน : ${qty} ใบ ประเภท : ${type_ticket}`;
 }
 
@@ -118,7 +125,7 @@ eventForm.addEventListener('submit', function (e) {
         qtyError.textContent = "จำนวนต้องอยู่ระหว่าง 1 ถึง 5";
         return;
     }
-    if ((type_ticket == "2" || type_ticket == "3") && qtyNumber > 2) {
+    if ((type_ticket == "2" || type_ticket == "3") && qtyNumber >= 2) {
         qtyError.textContent = "จำนวนตั๋วประเภท VIP หรือ Premium ไม่เกิน 2 ใบ";
         return;
     }
